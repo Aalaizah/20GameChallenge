@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://de78u6sepvyir"]
+
+[ext_resource type="Script" uid="uid://qbekyvg1mvns" path="res://Ball.cs" id="1_x8fbi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbx31"]
+
+[node name="ball" type="Node2D"]
+script = ExtResource("1_x8fbi")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_cbx31")

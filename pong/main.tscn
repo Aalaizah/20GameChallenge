@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://b821myv7hqira"]
+
+[ext_resource type="Script" uid="uid://dsmb854dech8b" path="res://Main.cs" id="1_ig7tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(1150, 10)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="ArenaTop" type="Area2D" parent="Arena"]
+position = Vector2(2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/ArenaTop"]
+position = Vector2(573, -6)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ArenaBottom" type="Area2D" parent="Arena"]
+position = Vector2(2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/ArenaBottom"]
+position = Vector2(572, 654)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="P1 Score" type="Label" parent="Arena"]
+offset_left = 422.0
+offset_top = 41.0
+offset_right = 462.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+
+[node name="P2 Score" type="Label" parent="Arena"]
+offset_left = 693.0
+offset_top = 41.0
+offset_right = 733.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1

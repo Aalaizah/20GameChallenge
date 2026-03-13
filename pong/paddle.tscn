@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4j7xe1qi3tfu"]
+
+[ext_resource type="Texture2D" uid="uid://dr42w4lgaha5l" path="res://Sprites/Paddle.png" id="1_0sbc1"]
+[ext_resource type="Script" uid="uid://bsj7dm6xwxjid" path="res://Paddle.cs" id="1_tbytw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbytw"]
+size = Vector2(46, 194)
+
+[node name="Paddle" type="Node2D"]
+script = ExtResource("1_tbytw")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(22, 102)
+shape = SubResource("RectangleShape2D_tbytw")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterBody2D"]
+offset_left = -2.0
+offset_top = 4.0
+offset_right = 46.0
+offset_bottom = 199.13727
+texture = ExtResource("1_0sbc1")
+expand_mode = 1
