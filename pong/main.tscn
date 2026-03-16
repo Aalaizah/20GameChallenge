@@ -10,18 +10,20 @@ script = ExtResource("1_ig7tw")
 
 [node name="Arena" type="Node2D" parent="."]
 
-[node name="ArenaTop" type="Area2D" parent="Arena"]
+[node name="ArenaTop" type="RigidBody2D" parent="Arena"]
 position = Vector2(2, 0)
+gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/ArenaTop"]
-position = Vector2(573, -6)
+position = Vector2(573, -5)
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="ArenaBottom" type="Area2D" parent="Arena"]
+[node name="ArenaBottom" type="RigidBody2D" parent="Arena"]
 position = Vector2(2, 0)
+gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/ArenaBottom"]
-position = Vector2(572, 654)
+position = Vector2(572, 653)
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="P1 Score" type="Label" parent="Arena"]
