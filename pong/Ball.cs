@@ -38,14 +38,5 @@ public partial class Ball : RigidBody2D
 		{
 			GetNode<Signals>("/root/Signals").EmitSignal("PlayerScored", 2);
 		}
-		
-		if (Input.IsActionPressed("p1ScoreTest"))
-		{
-			GetNode<Signals>("/root/Signals").EmitSignal("PlayerScored", 1);
-		}
-		if (Input.IsActionPressed("p2ScoreTest"))
-		{
-			GetNode<Signals>("/root/Signals").EmitSignal("PlayerScored", 2);
-		}
 	}
 }

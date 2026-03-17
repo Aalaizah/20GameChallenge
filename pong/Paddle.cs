@@ -13,7 +13,7 @@ public partial class Paddle : Node2D
     private int _player = 1;
     private int _maxHeight;
     private int _minHeight;
-    private int _paddleHeight = 200;
+    private int _paddleHeight = 100;
 
     public override void _Ready()
     {
@@ -29,7 +29,6 @@ public partial class Paddle : Node2D
         var downwardMovement = _yLoc + _speed;
         switch (_player)
         {
-            // doesn't constrain player to screen
             case 1:
             {
                 if (Input.IsActionPressed("p1UpPressed") && upwardMovement > _maxHeight)
