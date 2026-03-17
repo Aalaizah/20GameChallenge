@@ -13,9 +13,16 @@ public partial class Main : Node2D
     private Paddle _player1Paddle;
     private Paddle _player2Paddle;
     private int[] _scores = [0, 0];
+    private Timer _spawnBallTimer;
+    private int _playerToSpawnTowards;
 
     public override void _Ready()
     { 
+	    _spawnBallTimer = GetNode<Timer>("SpawnBallTimer");
+	    //_spawnBallTimer.OneShot = true;
+	    _spawnBallTimer.Timeout +=  _SpawnBall;
+	    _playerToSpawnTowards = GD.RandRange(1, 2);
+	    GD.Print(_playerToSpawnTowards);
 	    _NewGame();
     }
 
@@ -26,11 +33,15 @@ public partial class Main : Node2D
 		    case 1: 
 			    _scores[0] += 1;
 			    GetNode<Label>("Arena/P1 Score").Text = _scores[0].ToString();
+			    _playerToSpawnTowards = 1;
 			    break;
 		    case 2: _scores[1] += 1;
 			    GetNode<Label>("Arena/P2 Score").Text = _scores[1].ToString();
+			    _playerToSpawnTowards = 2;
 			    break;
 	    }
+	    _spawnBallTimer.OneShot = true;
+	    _spawnBallTimer.Start();
     }
 
     private void _NewGame()
@@ -61,10 +72,36 @@ public partial class Main : Node2D
 	    var screenWidth = viewportRect.X;
 	    var screenHeight = viewportRect.Y;
 	    var ballSpawn = new Vector2(screenWidth / 2, screenHeight / 2);
-	    float direction = (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+	    int directionDegrees = 0;
+	    //GD.Print(_playerToSpawnTowards);
+	    switch (_playerToSpawnTowards)
+	    {
+		    case 1:
+			    directionDegrees = GD.RandRange(135, 225);
+			    break;
+		    case 2:
+			    int whereToAim = GD.RandRange(1, 2);
+			    switch (whereToAim)
+			    {
+				    case 1:
+					    directionDegrees = GD.RandRange(0, 45);
+					    break;
+				    case 2:
+					    directionDegrees = GD.RandRange(315, 360);
+					    break;
+			    }
+			    break;
+	    }
+
+	    float direction = Mathf.DegToRad(directionDegrees);//(float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
 	    var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
 	    ball.SpawnBall(ballSpawn, direction, velocity);
 	    AddChild(ball);
+    }
+
+    private void _SpawnBall(int player)
+    {
+	    
     }
 
     private void _GameOver()

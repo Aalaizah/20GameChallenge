@@ -32,12 +32,10 @@ public partial class Ball : RigidBody2D
 	{
 		if (this.Position.X > _width)
 		{
-			GD.Print("p1 scored");
 			GetNode<Signals>("/root/Signals").EmitSignal("PlayerScored", 1);
 		}
 		if (this.Position.X < 0)
 		{
-			GD.Print("p2 scored");
 			GetNode<Signals>("/root/Signals").EmitSignal("PlayerScored", 2);
 		}
 		
